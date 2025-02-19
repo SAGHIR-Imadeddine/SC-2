@@ -5,8 +5,8 @@
   "scripts": {
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "start": "npx expo start && npx json-server --watch ./db/db.json --port 3000",
-    "dev": "npx expo start && npx json-server --watch ./db/testDB.json --port 3030",
+    "start": "npx expo start -c && npx json-server --watch ./db/db.json --port 3000",
+    "dev": "npx expo start -c && npx json-server --watch ./db/testDB.json --port 3030",
     "lint": "eslint \"**/*.{js,jsx,ts,tsx}\" && prettier -c \"**/*.{js,jsx,ts,tsx,json}\"",
     "format": "eslint \"**/*.{js,jsx,ts,tsx}\" --fix && prettier \"**/*.{js,jsx,ts,tsx,json}\" --write",
     "web": "expo start --web"
@@ -38,7 +38,12 @@
     "react-native-screens": "~4.4.0",
     "react-native-vector-icons": "^10.2.0",
     "react-native-web": "~0.19.10",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "expo-image-picker": "~16.0.6",
+    "expo-sharing": "~13.0.1",
+    "expo-media-library": "~17.0.6",
+    "expo-camera": "~16.0.16",
+    "jest-expo": "~52.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

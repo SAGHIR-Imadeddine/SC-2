@@ -6,36 +6,52 @@ interface Style {
 
 interface MyButtonProps {
   onPress: () => void;
-  disabled: boolean;
+  disabled?: boolean;
   title: string;
   textStyle?: Style;
   containerStyle?: Style;
-  // icon?: () => React.ReactNode;
+  icon?: React.ReactNode;
 }
-export default function MyButton({onPress, disabled = true, title, textStyle = {}, containerStyle = {}, icon}: MyButtonProps) {
+
+export default function MyButton({
+  onPress, 
+  disabled = false,
+  title, 
+  textStyle = {}, 
+  containerStyle = {}, 
+  icon
+}: MyButtonProps) {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={onPress}
+      disabled={disabled}
       style={{...style.btn, ...containerStyle}}
     >
-      <Text style={{...style.text, ...textStyle}}>{title}</Text>
+      <View style={style.content}>
+        {icon}
+        <Text style={{...style.text, ...textStyle}}>{title}</Text>
+      </View>
     </TouchableOpacity>
   );
 }
 
 const style = StyleSheet.create({
-  btn : {
+  btn: {
     backgroundColor: "#f4f4f4",
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
     minHeight: 60,
     marginHorizontal: 16,
   },
-  text : {
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  text: {
     fontSize: 16,
     fontWeight: '500',
   },
-})
+});

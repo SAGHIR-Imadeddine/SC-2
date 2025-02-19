@@ -1,120 +1,267 @@
 {
-    "products": [
-      {
-        "id": 1,
-        "name": "Laptop HP Pavilion",
-        "type": "Informatique",
-        "barcode": "1234567890123",
-        "price": 1200,
-        "solde": 1100,
-        "supplier": "HP",
-        "image": "https://mediazone.ma/uploads/images/products/16412/landing-page/assets/images/swiper-1.png",
-        "stocks": [
-          {
-            "id": 1999,
-            "name": "Gueliz B2",
-            "quantity": 21,
-            "localisation": {
-              "city": "Marrakesh",
-              "latitude": 31.628674,
-              "longitude": -7.992047
-            }
-          },
-          {
-            "id": 2991,
-            "name": "Lazari H2",
-            "quantity": 24,
-            "localisation": {
-              "city": "Oujda",
-              "latitude": 34.689404,
-              "longitude": -1.912823
-            }
+  "products": [
+    {
+      "id": "1",
+      "name": "Laptop HP Pavilion",
+      "type": "Informatique",
+      "barcode": "1234567890123",
+      "price": 1200,
+      "solde": 1100,
+      "supplier": "HP",
+      "image": "https://mediazone.ma/uploads/images/products/16412/landing-page/assets/images/swiper-1.png",
+      "stocks": [
+        {
+          "id": 1999,
+          "name": "Gueliz B2",
+          "quantity": 21,
+          "localisation": {
+            "city": "Marrakesh",
+            "latitude": 31.628674,
+            "longitude": -7.992047
           }
-        ],
-        "editedBy": [
-          {
-            "warehousemanId": 1333,
-            "at": "2025-02-02"
+        },
+        {
+          "id": 2991,
+          "name": "Lazari H2",
+          "quantity": 24,
+          "localisation": {
+            "city": "Oujda",
+            "latitude": 34.689404,
+            "longitude": -1.912823
           }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Clavier Mécanique Logitech",
-        "type": "Accessoires",
-        "barcode": "9876543210987",
-        "price": 100,
-        "supplier": "Logitech",
-        "image": "https://in-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/8/a/8aa01aa.png",
-        "stocks": [
-          {
-            "id": 1999,
-            "name": "Gueliz B2",
-            "quantity": 20,
-            "localisation": {
-              "city": "Marrakesh",
-              "latitude": 31.628674,
-              "longitude": -7.992047
-            }
-          },
-          {
-            "id": 2991,
-            "name": "Lazari H2",
-            "quantity": 5,
-            "localisation": {
-              "city": "Oujda",
-              "latitude": 34.689404,
-              "longitude": -1.912823
-            }
+        }
+      ],
+      "editedBy": [
+        {
+          "warehousemanId": 1333,
+          "at": "2025-02-02"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Clavier Mécanique Logitech",
+      "type": "Accessoires",
+      "barcode": "9876543210987",
+      "price": 100,
+      "supplier": "Logitech",
+      "image": "https://in-media.apjonlinecdn.com/catalog/product/cache/b3b166914d87ce343d4dc5ec5117b502/8/a/8aa01aa.png",
+      "stocks": [
+        {
+          "id": 1999,
+          "name": "Gueliz B2",
+          "quantity": 53,
+          "localisation": {
+            "city": "Marrakesh",
+            "latitude": 31.628674,
+            "longitude": -7.992047
           }
-        ],
-        "editedBy": [
-          {
-            "warehousemanId": 1444,
-            "at": "2025-02-02"
+        },
+        {
+          "id": 2991,
+          "name": "Lazari H2",
+          "quantity": 5,
+          "localisation": {
+            "city": "Oujda",
+            "latitude": 34.689404,
+            "longitude": -1.912823
           }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Pc Gamer Omen By HP",
-        "type": "Informatique",
-        "barcode": "1236543210987",
-        "price": 11000,
-        "supplier": "HP",
-        "image": "https://technoplace.ma/11482-large_default/hp-omen-17-i7-7700hq-173-16gb-2tb-geforce-gtx-10.jpg",
-        "stocks": [],
-        "editedBy": [
-          {
-            "warehousemanId": 1444,
-            "at": "2025-02-02"
+        }
+      ],
+      "editedBy": [
+        {
+          "warehousemanId": 1444,
+          "at": "2025-02-02"
+        },
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T08:35:41.288Z"
+        },
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T10:15:53.335Z"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Pc Gamer Omen By HP",
+      "type": "Informatique",
+      "barcode": "1236543210987",
+      "price": 11000,
+      "supplier": "HP",
+      "image": "https://technoplace.ma/11482-large_default/hp-omen-17-i7-7700hq-173-16gb-2tb-geforce-gtx-10.jpg",
+      "stocks": [],
+      "editedBy": [
+        {
+          "warehousemanId": 1444,
+          "at": "2025-02-02"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Tfhf",
+      "type": "Fgrg",
+      "barcode": "5458",
+      "price": 5555,
+      "solde": 845,
+      "supplier": "Erg",
+      "image": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fware-stock-b537a7da-9331-411b-9442-1a4b1ae66667/ImagePicker/ceee461b-92c7-4ac7-9be2-c2605a358946.jpeg",
+      "stocks": [
+        {
+          "id": 1999,
+          "name": "Gueliz B2",
+          "quantity": 40,
+          "localisation": {
+            "city": "Marrakesh",
+            "latitude": 31.628674,
+            "longitude": -7.992047
           }
-        ]
-      }
-    ],
-    "warehousemans": [
-      {
-        "id": 1333,
-        "name": "Amine Boutaleb",
-        "dob": "1988-05-02",
-        "city": "Oujda",
-        "secretKey": "AH90907J",
-        "warehouseId": 1999
-      },
-      {
-        "id": 1444,
-        "name": "Karim El Mansouri",
-        "dob": "1990-09-15",
-        "city": "Marrakesh",
-        "secretKey": "RK189987A",
-        "warehouseId": 2991
-      }
-    ],
-    "statistics": {
-      "totalProducts": 3,
-      "outOfStock": 1,
-      "totalStockValue": 70,
-      "mostAddedProducts": [],
-      "mostRemovedProducts": []
+        }
+      ],
+      "editedBy": [
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T01:21:18.199Z"
+        },
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T08:27:45.384Z"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Tfhkj",
+      "type": "Fft",
+      "barcode": "123456",
+      "price": 588,
+      "solde": 0,
+      "supplier": "Zfgg",
+      "image": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fware-stock-b537a7da-9331-411b-9442-1a4b1ae66667/ImagePicker/3e597250-0467-4385-be26-637c39a26f37.jpeg",
+      "stocks": [],
+      "editedBy": [
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T01:22:24.433Z"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Thetjdgjdhk",
+      "type": "Dhmdhm",
+      "barcode": "3698741",
+      "price": 455,
+      "solde": 0,
+      "supplier": "Ftfgh",
+      "image": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fware-stock-b537a7da-9331-411b-9442-1a4b1ae66667/ImagePicker/f6111538-bcaa-4ece-ad5f-5f6cb8b4fe2e.jpeg",
+      "stocks": [
+        {
+          "id": 1999,
+          "name": "Gueliz B2",
+          "quantity": 3,
+          "localisation": {
+            "city": "Marrakesh",
+            "latitude": 31.628674,
+            "longitude": -7.992047
+          }
+        }
+      ],
+      "editedBy": [
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T01:23:05.459Z"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Ghh",
+      "type": "Gh7g",
+      "barcode": "1234567890123",
+      "price": 558,
+      "solde": 555,
+      "supplier": "Ghgr",
+      "image": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fware-stock-b537a7da-9331-411b-9442-1a4b1ae66667/ImagePicker/2e618442-d42a-4889-953c-e71a0b73ca48.jpeg",
+      "stocks": [
+        {
+          "id": 1999,
+          "name": "Gueliz B2",
+          "quantity": 52,
+          "localisation": {
+            "city": "Marrakesh",
+            "latitude": 31.628674,
+            "longitude": -7.992047
+          }
+        }
+      ],
+      "editedBy": [
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T08:17:21.103Z"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Hhhhhh ",
+      "type": "Feen ",
+      "barcode": "6111252421582",
+      "price": 555,
+      "solde": 0,
+      "supplier": "Fgv",
+      "image": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fware-stock-b537a7da-9331-411b-9442-1a4b1ae66667/ImagePicker/6db551d6-af4c-4b3f-af21-b6e103cb50f5.jpeg",
+      "stocks": [],
+      "editedBy": [
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T10:13:04.998Z"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Hhhhhh ",
+      "type": "Feen hh",
+      "barcode": "6111035000058",
+      "price": 66,
+      "solde": 0,
+      "supplier": "Dygf6",
+      "image": "file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540anonymous%252Fware-stock-b537a7da-9331-411b-9442-1a4b1ae66667/ImagePicker/07abe686-b7e8-4bf5-ad13-a726b80d5690.jpeg",
+      "stocks": [],
+      "editedBy": [
+        {
+          "warehousemanId": "1333",
+          "at": "2025-02-19T11:04:19.299Z"
+        }
+      ]
     }
+  ],
+  "warehousemans": [
+    {
+      "id": "1333",
+      "name": "Amine Boutaleb",
+      "dob": "1988-05-02",
+      "city": "Oujda",
+      "secretKey": "AH90907J",
+      "warehouseId": 1999
+    },
+    {
+      "id": "1444",
+      "name": "Karim El Mansouri",
+      "dob": "1990-09-15",
+      "city": "Marrakesh",
+      "secretKey": "RK189987A",
+      "warehouseId": 2991
+    }
+  ],
+  "statistics": {
+    "totalProducts": 3,
+    "outOfStock": 1,
+    "totalStockValue": 70,
+    "mostAddedProducts": [],
+    "mostRemovedProducts": []
   }
+}

@@ -26,7 +26,7 @@ export const login = createAsyncThunk<Warehouseman, string>(
             await AsyncStorage.setItem('user', JSON.stringify(user));
             return user;
         } catch (error) {
-            return rejectWithValue('Error connecting to server');
+            return rejectWithValue('Error connecting  server');
         }
     }
   );
@@ -44,16 +44,18 @@ export const login = createAsyncThunk<Warehouseman, string>(
           }
   });
 
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async () => {
+    await AsyncStorage.removeItem('user');
+    return null;
+  }
+);
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    logout: (state) => {
-      state.isAuthenticated = false;
-      state.user = null;
-      AsyncStorage.removeItem('user');
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
@@ -72,10 +74,14 @@ const authSlice = createSlice({
       .addCase(loadUser.fulfilled, (state, action: PayloadAction<Warehouseman | null>) => {
         state.isAuthenticated = !!action.payload;
         state.user = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        // console.log(state.user);
+        state.isAuthenticated = false;
+        state.user = null;
+        state.error = null;
       });
   },
-
 });
 
-export const {  logout } = authSlice.actions;
 export default authSlice.reducer;

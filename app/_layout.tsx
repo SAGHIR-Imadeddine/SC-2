@@ -1,56 +1,77 @@
-import { Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useEffect, useState } from 'react';
+import { Stack } from 'expo-router';
+import { useEffect } from 'react';
 import { StatusBar } from "expo-status-bar";
-import { Provider, useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState, store } from '../store/store';
-import { loadUser } from '~/slices/authSlice';
+import { Provider } from 'react-redux';
+import { store } from '../store/store';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { useAppLayout } from '../hooks/useAppLayout';
+import { useAuth } from '../hooks/useAuth';
+
+
+function LayoutNav() {
+  const { isAuthenticated, loading, initializeAuth } = useAuth();
+
+
+  if ( loading) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
+ 
+  return (
+    <>
+   <StatusBar style='dark' />
+        <Stack
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#ffffff',
+            },
+            headerTintColor: '#000000',
+            gestureEnabled: false,
+          }}
+        >
+          <Stack.Screen 
+            name="index" 
+            options={{ 
+              headerShown: false,
+            }} 
+          />
+          <Stack.Screen 
+            name="dashboard" 
+            options={{ 
+              headerShown: false,
+            }} 
+          />
+          <Stack.Screen 
+            name="+not-found" 
+            options={{ 
+              title: 'Not Found',
+            }} 
+          />
+        </Stack>
+    </>
+  )
+}
+
 
 SplashScreen.preventAutoHideAsync();
 
 function AuthLoader({ children }: { children: React.ReactNode }) {
-  const dispatch = useDispatch<AppDispatch>();
-  const router = useRouter();
-  const [appIsReady, setAppIsReady] = useState(false);
+  const { appIsReady, handleNavigate, finishLoading } = useAppLayout();
+  const { isAuthenticated, loading, initializeAuth } = useAuth();
 
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
-  const loading = useSelector((state: RootState) => state.auth.loading);
+  useEffect(() => {
+    initializeAuth().then(finishLoading);
+  }, []);
 
-  const prepare = useCallback(async () => {
-    try {           
-       await dispatch(loadUser()).unwrap();
-    } catch (error) {
-      console.warn('Error restoring session:', error);
-    } finally {
-      setAppIsReady(true);
+  useEffect(() => {
+    if (appIsReady && !loading && isAuthenticated) {
+      handleNavigate('/dashboard');
     }
-  }, [dispatch]);
-
-  useEffect(() => {
-    prepare();
-  }, [prepare]);
-
-  // Handle navigation and splash screen
-  useEffect(() => {
-    const handleInitialNavigation = async () => {
-      if (appIsReady && !loading) {
-        try {
-          await SplashScreen.hideAsync();
-          // Delay navigation slightly to ensure layout is ready
-          if (isAuthenticated) {
-            setTimeout(() => {
-              router.replace('/(dashboard)');
-            }, 100);
-          }
-        } catch (error) {
-          console.warn('Navigation error:', error);
-        }
-      }
-    };
-
-    handleInitialNavigation();
-  }, [appIsReady, loading, isAuthenticated, router]);
+  }, [isAuthenticated, appIsReady, loading]);
 
   if (!appIsReady || loading) {
     return (
@@ -64,37 +85,11 @@ function AuthLoader({ children }: { children: React.ReactNode }) {
 }
 
 export default function Layout() {
+  
   return (
     <Provider store={store}>
       <AuthLoader>
-        <StatusBar style='dark' />
-        <Stack
-          screenOptions={{
-            headerStyle: {
-              backgroundColor: '#ffffff',
-            },
-            headerTintColor: '#000000',
-          }}
-        >
-          <Stack.Screen 
-            name="index" 
-            options={{ 
-              headerShown: false,
-            }} 
-          />
-          <Stack.Screen 
-            name="(dashboard)" 
-            options={{ 
-              headerShown: false,
-            }} 
-          />
-          <Stack.Screen 
-            name="+not-found" 
-            options={{ 
-              title: 'Not Found',
-            }} 
-          />
-        </Stack>
+       <LayoutNav />
       </AuthLoader>
     </Provider>
   );

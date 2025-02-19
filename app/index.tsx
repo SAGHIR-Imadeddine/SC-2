@@ -1,21 +1,25 @@
-import { useRouter } from "expo-router";
+import { router, useRouter } from "expo-router";
 import { Text, View, StyleSheet, ImageBackground, SafeAreaView, TextInput, Alert, Keyboard, ActivityIndicator } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from "expo-linear-gradient";
 import MyButton from "../components/MyButton";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { login } from '../slices/authSlice';
-import { RootState, AppDispatch } from '../store/store';
+
+import { useAuth } from '../hooks/useAuth';
 
 const bg = require('../assets/images/warehouseBG.webp');
 
 export default function Home() {
-  const [secret, setSecret] = useState('');
-  const dispatch = useDispatch<AppDispatch>();
+  const [secret, setSecret] = useState('AH90907J');
+  const { loading, error, handleLogin, isAuthenticated, user } = useAuth();
 
-  const loading = useSelector((state: RootState) => state.auth.loading);
-  const error = useSelector((state: RootState) => state.auth.error);
+if (loading) {
+  return (
+    <View style={style.bg}>
+      <ActivityIndicator size="large" color="#0000ff" />
+    </View>
+  );
+}
 
   useEffect(() => {
     if (error) {
@@ -23,20 +27,18 @@ export default function Home() {
     }
   }, [error]);
 
-  const handleLogin = async () => {
-    if (secret.trim().length < 3) {
-      Alert.alert('Invalid ID', 'Please enter a valid ID (minimum 3 characters).');
-      return;
-    }
-
+  // if (isAuthenticated && !loading && !error && user) {
+  //   router.replace('/dashboard');
+  // }
+  const onSubmit = async () => {
     Keyboard.dismiss();
-    
-    try {
-      await dispatch(login(secret)).unwrap();
-    } catch (error) {
-      console.error(error);
+    await handleLogin(secret);
+    if (isAuthenticated && !loading && !error && user) {
+      router.replace('/dashboard');
     }
   };
+
+
 
   return (
     <>
@@ -63,9 +65,9 @@ export default function Home() {
               <View>
                 <MyButton 
                   title={loading ? "Logging in..." : "Get Started"}
-                  onPress={handleLogin}
+                  onPress={onSubmit}
                   disabled={loading}
-                  icon={loading ? () => <ActivityIndicator color="#fff" size="small" /> : ''}
+                  icon={loading && <ActivityIndicator color="#fff" size="small" />}
                 />
               </View>
             </SafeAreaView>
